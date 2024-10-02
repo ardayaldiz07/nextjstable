@@ -4,7 +4,6 @@ const SORTDATA = (data, field, order) => {
     return [...data].sort((a, b) => {
         const aValue = DataByPath(field, a);
         const bValue = DataByPath(field, b);
-        console.log(typeof(aValue));
 
         if (order === 'asc') {
             return aValue > bValue ? 1 : -1; // Artan sıralama
