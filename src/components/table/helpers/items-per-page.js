@@ -8,9 +8,6 @@ export default function ItemsPerPage({pageOptions, setItemsPerPage}){
                 {pageOptions.map((item,index) => 
                     <option className="text-center" key={index} value={item.value}>{item.text}</option>
                 )}
-                {
-                    console.log(typeof(pageOptions))
-                }
             </select>
         </div>
     )

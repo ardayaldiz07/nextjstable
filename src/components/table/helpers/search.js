@@ -15,7 +15,8 @@ export default function SEARCH({ data, change, searchFields, setCurrentPage }) {
         });
 
         change(filteredData);  
-        setCurrentPage(1);      
+        setCurrentPage(1);    
+          
     };
 
     return (
