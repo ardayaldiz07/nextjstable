@@ -33,6 +33,30 @@ You need to pass the required props when using the component. Below is an exampl
     { field: 'category.items', sort: true, text: 'Category', splitField: 'name', splitBy: '/' },
     { field: 'spot', text: 'Spot', sort: true },
   ]}
+/>
+```
+
+## Advanced Usage
+
+```js
+<NEXTTABLE
+  api={'exampleapi'}
+  apiBasePath={'example.body.items'}
+  search={{
+    enabled: true,
+    fields: ['exapmleId', 'exampleTitle', 'spot'],
+  }}
+  filter={{
+    enabled: true,
+    items: ['Example1', 'Example2', 'Example3'],
+  }}
+  columns={[
+    { field: '', order: true, text: 'Row' }, // use it if you want
+    { field: 'newsId', text: 'ID', sort: true, sorted: true },
+    { field: 'title', text: 'Title', sort: true },
+    { field: 'category.items', sort: true, text: 'Category', splitField: 'name', splitBy: '/' },
+    { field: 'spot', text: 'Spot', sort: true },
+  ]}
   itemPerPage={5}
   pagination={true}
   usePage={true}
