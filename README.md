@@ -14,7 +14,8 @@
 
 You need to pass the required props when using the component. Below is an example:
 
-```html <NEXTTABLE
+```js  
+<NEXTTABLE
   api={'exampleapi'}
   apiBasePath={'example.body.items'}
   search={{
