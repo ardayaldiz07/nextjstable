@@ -6,8 +6,11 @@ export default function ItemsPerPage({pageOptions, setItemsPerPage}){
         <div>
             <select onChange={handleItemsPerPageChange} className="bg-gray-900 h-20vh rounded-lg shadow-lg text-white mb-2">
                 {pageOptions.map((item,index) => 
-                    <option key={index} value={item.value}>{item.text}</option>
+                    <option className="text-center" key={index} value={item.value}>{item.text}</option>
                 )}
+                {
+                    console.log(typeof(pageOptions))
+                }
             </select>
         </div>
     )

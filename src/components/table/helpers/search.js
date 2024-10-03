@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function SEARCH({ data, change, searchFields }) {
+export default function SEARCH({ data, change, searchFields, setCurrentPage }) {
     const [inputValue, setInputValue] = useState('');
 
     const handleInputChange = (event) => {
@@ -14,7 +14,8 @@ export default function SEARCH({ data, change, searchFields }) {
             });
         });
 
-        change(filteredData);        
+        change(filteredData);  
+        setCurrentPage(1);      
     };
 
     return (

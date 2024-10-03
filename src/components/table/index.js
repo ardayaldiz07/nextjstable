@@ -17,6 +17,7 @@ import SORTDATA from './helpers/sort';
 import THSORT from './th-types/th-sort';
 import Pagination from './pagination/pagination';
 import ItemsPerPage from './helpers/items-per-page';
+import OrderField from './td-types/order';
 
 export default function NEXTTABLE(options) {
     const [data, setData] = useState([]);
@@ -49,9 +50,7 @@ export default function NEXTTABLE(options) {
         setFilteredData(sortedData);
     };
 
-    const handlePageChange = (page) => {
-        setCurrentPage(page);
-    };
+
 
     const startIndex = (currentPage - 1) * itemsPerPage;
     const paginatedData = options.pagination ? filteredData.slice(startIndex, startIndex + itemsPerPage) : filteredData;
@@ -59,7 +58,7 @@ export default function NEXTTABLE(options) {
     return (
         <WRAPPER>
             <div className='flex gap-5 justify-between items-center'>
-                {options.search.enabled && <SEARCH data={formattedData} searchFields={options.search.fields} change={setFilteredData} />}
+                {options.search.enabled && <SEARCH data={formattedData} setCurrentPage={setCurrentPage} searchFields={options.search.fields} change={setFilteredData} />}
                 {options.filter.enabled && <CATEGORY categories={options.filter.items} setCurrentPage={setCurrentPage} setFilteredData={setFilteredData} data={formattedData} />}
             </div>
             {
@@ -93,6 +92,11 @@ export default function NEXTTABLE(options) {
                                         return (
                                             <SplitField key={j} col={col} item={item} />
                                         );
+                                    case col.order !== undefined && col.order !== false:
+                                        return(
+                                            <OrderField index={(currentPage - 1) * itemsPerPage + i+1}/>
+                                        )
+
                                     default:
                                         return (
                                             <Base key={j} col={col} item={item} />
@@ -108,7 +112,7 @@ export default function NEXTTABLE(options) {
                 <Pagination
                     currentPage={currentPage}
                     totalPages={Math.ceil(filteredData.length / itemsPerPage)}
-                    onPageChange={handlePageChange}
+                    onPageChange={setCurrentPage}
                 />
             )}
         </WRAPPER>
